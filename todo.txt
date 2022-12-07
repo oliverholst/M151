@@ -1,0 +1,8 @@
+
+adjust min/max values for form/db fields
+add test data to db
+Git repo erstellen
+correct method summaries
+Shopping cart -> autos kaufen
+
+Add PayPal (optional)
