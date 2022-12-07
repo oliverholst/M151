@@ -1,0 +1,81 @@
+﻿@model Garage.Models.Auto
+
+@{
+    ViewData["Title"] = "Loeschen";
+}
+
+<div class="container">
+    <h1>Löschen</h1>
+    <a asp-action="Index">Zurück zur Übersicht</a>
+
+    <div>
+        <h4>Auto löschen</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayNameFor(model => model.Pic)
+
+                <img src="@ViewBag.ImageSource" class="img-fluid" />
+
+            </div>
+        </div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PK_Auto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PK_Auto)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Marke)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Marke)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Modell)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Modell)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Farbe)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Farbe)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Leistung)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Leistung)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Preis)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Preis)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Jahrgang)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Jahrgang)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Treibstoff)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Treibstoff)
+            </dd>
+        </dl>
+        <form asp-action="Loeschen">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

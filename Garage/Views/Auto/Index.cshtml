@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Garage.Models.Auto>
+
+@{
+    ViewData["Title"] = "Auto Übersicht";
+
+    // Vorbereitung für Filterliste
+    //-------------------------------
+
+    List<SelectListItem> treibstoffe = new List<SelectListItem>();
+    Auto car = new Auto();
+
+    //einen leeren Treibstoff hinzufügen
+    treibstoffe.Add(new SelectListItem { Text = "", Value = "" });
+
+    foreach (var item in car.TreibstoffTypOptions)
+    {
+        // alles bestehenden Treibstoffe hinzufügen
+        treibstoffe.Add(new SelectListItem { Text = item.Key, Value = item.Value });
+    }
+}
+<div class="container">
+    <h1>Auto Übersicht</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+
+    </p>
+    <p> <a asp-action="IndexCard">Ansicht Card-View</a></p>
+
+    @*Blättern*@
+
+    <form asp-controller="Auto" method="post"
+          asp-action="Index">
+        <button class="btn btn-outline-secondary" type="submit" name="sPage" value="Back">Back</button>
+        <button class="btn btn-outline-primary" type="submit" name="sPage" value="Next">Next</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PK_Auto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marke)
+                    <form asp-controller="Auto" method="post" asp-action="Index">
+                        <button type="submit" name="sortOrder" value="ASC">&nbsp;&uarr;&nbsp;</button>
+                        <button type="submit" name="sortOrder" value="DESC">&nbsp;&darr;&nbsp;</button>
+                    </form>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modell)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Farbe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Leistung)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Preis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Jahrgang)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Treibstoff)
+                    @using (Html.BeginForm("Index", "Auto", FormMethod.Post))
+                    {
+                        @Html.DropDownList("sTreibstoffFilter", treibstoffe, new { onchange = "this.form.submit();" })
+                    }
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PK_Auto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marke)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modell)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Farbe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Leistung)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Preis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Jahrgang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Treibstoff)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PK_Auto })
+                        @Html.ActionLink("Details", "Details", new { id = item.PK_Auto })
+                        @Html.ActionLink("Delete", "Loeschen", new { id = item.PK_Auto })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

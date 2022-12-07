@@ -1,0 +1,46 @@
+﻿@model Garage.Controllers.AccountController
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Admin Bereich";
+	ViewData["Account PK"] = Context.Session.GetInt32("Account PK");
+	ViewData["IsAdmin"] = Context.Session.GetInt32("IsAdmin");
+}
+<div class="container">
+    @if(Context.Session.GetInt32("IsAdmin") == 1)
+    {
+        <h1>Willkommen Admin</h1>
+
+        <div class="card-deck">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Auto Übersicht</h5>
+                            <p class="card-text">Hier gehts zur Auto Übersicht</p>
+                            <a asp-controller="Auto" asp-action="Index" type="button" class="btn btn-primary">Mehr Erfahren</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Feedback Übersicht</h5>
+                            <p class="card-text">Hier gehts zur Feedback Übersicht</p>
+                            <a asp-controller="Feedback" asp-action="Index" type="button" class="btn btn-primary">Mehr Erfahren</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    } else
+	{
+		<script>
+            window.history.back();
+        </script>
+	}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

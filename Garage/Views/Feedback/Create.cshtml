@@ -1,0 +1,61 @@
+﻿@model Garage.Models.Feedback
+    <div class="container">
+        <br />
+        <h4>Feedback</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FahrzeugArt)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.FahrzeugArt,
+                       (SelectList)ViewBag.FahrzeugArtListe)
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Mitteilung" class="control-label"></label>
+                        <textarea asp-for="Mitteilung" class="form-control"></textarea>
+                        <span asp-validation-for="Mitteilung" class="text-danger"></span>
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Service)
+                    </div>
+                    <div>
+                        @Html.RadioButtonFor(model => model.Service, 0) Gut
+                        @Html.RadioButtonFor(model => model.Service, 1) Geht so
+                        @Html.RadioButtonFor(model => model.Service, 2) Schlecht
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Modellauswahl)
+                    </div>
+
+                    <div>
+                        @Html.RadioButtonFor(model => model.Modellauswahl, 0) Gut
+                        @Html.RadioButtonFor(model => model.Modellauswahl, 1) Geht so
+                        @Html.RadioButtonFor(model => model.Modellauswahl, 2) Schlecht
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Speichern" class="btn btn-primary btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </div>

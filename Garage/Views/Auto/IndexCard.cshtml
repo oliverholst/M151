@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Garage.Models.Auto>
+
+@{
+
+    ViewData["Title"] = "Übersicht";
+}
+
+<div class="container">
+    <p>
+        <a>Sortieren</a>
+
+        <a style="text-decoration: none" href="@Url.Action("IndexCard", "Auto", new {sortOrder = "ASC"})">&nbsp;&uarr;&nbsp;</a>
+        <a style="text-decoration: none" href="@Url.Action("IndexCard", "Auto", new {sortOrder = "DESC"})">&nbsp;&darr;&nbsp;</a>
+    </p>
+    <div class="card-columns">
+
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-img">
+                    @{
+                        if (item.Pic != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.Pic);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                            <img src="@imgSrc" class="img-fluid" />
+
+                        }
+                    }
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Marke @item.Modell (@item.Jahrgang.Year)</h5>
+                    <p class="card-subtitle">
+                        @Html.DisplayFor(modelItem => item.Preis)
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Details" asp-route-id="@item.PK_Auto" class="btn btn-info">Details..</a>
+                    <a asp-action="BuyCar" asp-route-id="@item.PK_Auto" class="btn btn-info">Bestellen</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

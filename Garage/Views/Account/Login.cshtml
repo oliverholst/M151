@@ -1,0 +1,29 @@
+﻿@model Garage.Models.Login
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="d-flex justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="LoginUser" enctype="multipart/form-data" method="post" class="form-signin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label sr-only"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email oder Benutzername" required autofocus />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label sr-only"></label>
+                <input asp-for="Password" class="form-control" placeholder="Passwort" required autofocus />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <br />
+
+            <p>Noch keinen Account?</p><a asp-action="Register" asp-controller="Account">Jetzt Registrieren!</a>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary btn-success" />
+            </div>
+        </form>
+    </div>
+</div>

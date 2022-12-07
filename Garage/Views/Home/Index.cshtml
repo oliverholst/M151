@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Autopark";
+}
+<div class="title-body">
+    <div class="text-center">
+        <header class="title-header">
+            <div class="title-overlay"></div>
+            <div class="title-container h-100">
+                <div class="d-flex h-100 text-center align-items-center">
+                    <div class="w-100 text-white" style="padding-bottom: 300px;">
+                        <h1 class="display-3">Herzlich Willkommen</h1>
+                        <p class="lead mb-0">zum Autopark</p>
+                    </div>
+                </div>
+            </div>
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="~/video/title.mp4" type="video/mp4">
+            </video>
+        </header>
+    </div>
+
+    <br />
+
+    <div class="container">
+        <div class="card-deck">
+            <div class="card">
+                <img src="~/images/Cards/card1.jpg" class="card-img-top" alt="card_1">
+                <div class="card-body">
+                    <h5 class="card-title">Lamborghini Aventador</h5>
+                    <p class="card-text">
+                        Die Aventador-Modelle wurden speziell entwickelt,
+                        um über das Konzept der reinen Performance hinauszugehen.
+                    </p>
+                    <a asp-controller="Auto"  asp-action="IndexCard" type="button" class="btn btn-primary">Mehr Erfahren</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/images/Cards/card2.jpg" class="card-img-top" alt="card_2">
+                <div class="card-body">
+                    <h5 class="card-title">LaFerrari</h5>
+                    <p class="card-text">Der Ferrari LaFerrari ist ein Supersportwagen des italienischen Sportwagenherstellers Ferrari.</p>
+                    <a asp-controller="Auto" asp-action="IndexCard" type="button" class="btn btn-primary">Mehr Erfahren</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/images/Cards/card3.jpg" class="card-img-top" alt="card_3">
+                <div class="card-body">
+                    <h5 class="card-title">Bugatti Chrion</h5>
+                    <p class="card-text">In Sachen Leistung kommt der Bugatti Chiron auf 1.500 PS und ein maximales Drehmoment von 1.600 Nm.</p>
+                    <a asp-controller="Auto" asp-action="IndexCard" type="button" class="btn btn-primary">Mehr Erfahren</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="container">
+        <div class="jumbotron" style="text-align: center;">
+            <h1 class="display-4">Autopark</h1>
+            <p class="lead">Das grösste Autocenter der Schweiz</p>
+            <hr class="my-4">
+            <p>
+                Seit der Gründung im Jahr 1972 sind
+                Autos unsere Leidenschaft. Was damals klein begann,
+                ist heute das grösste Autocenter der Schweiz.
+                Auf unserer 12'000 m² grossen, mehrheitlich
+                überdachten und modernen Anlage bieten wir
+                Ihnen permanent über 600 Autos von 40 Marken.
+                Viele Neuwagen Aktionen und günstige Gebrauchtwagen.
+                Sowohl fabrikneue Direktimporte wie beste Uster Occasionen.
+                Und eins haben alle unsere Autos gemeinsam:
+                konkurrenzlose Discountpreise! Auto An und Verkauf,
+                Eintausch, massgeschneiderte Finanzierungen,
+                Versicherungen, günstiges Autoleasing – wir bieten
+                Ihnen alles rund um Ihr neues Auto. Profitieren auch
+                Sie vom besten Preis-Leistungs-Verhältnis im schweizerischen Automarkt.
+            </p>
+        </div>
+    </div>
+
+    <br />
+
+    @{ await Html.RenderPartialAsync("_Werbung");}
+
+</div>

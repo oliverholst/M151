@@ -1,0 +1,80 @@
+﻿@model Garage.Models.Auto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container">
+    <h1>Edit</h1>
+    <a asp-action="Index">Zurück zur Übersicht</a>
+    <h4>
+        Auto ändern
+    </h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            @Html.DisplayNameFor(model => model.Pic)
+            <img src="@ViewBag.ImageSource" class="img-fluid" />
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Marke" class="control-label"></label>
+                    <input asp-for="Marke" class="form-control" />
+                    <span asp-validation-for="Marke" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modell" class="control-label"></label>
+                    <input asp-for="Modell" class="form-control" />
+                    <span asp-validation-for="Modell" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Farbe" class="control-label"></label>
+                    <input asp-for="Farbe" class="form-control" />
+                    <span asp-validation-for="Farbe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Leistung" class="control-label"></label>
+                    <input asp-for="Leistung" class="form-control" />
+                    <span asp-validation-for="Leistung" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Preis" class="control-label"></label>
+                    <input asp-for="Preis" class="form-control" />
+                    <span asp-validation-for="Preis" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Jahrgang" class="control-label"></label>
+                    <input asp-for="Jahrgang" class="form-control" />
+                    <span asp-validation-for="Jahrgang" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Treibstoff" class="control-label"></label>
+
+                    @Html.DropDownListFor(model => model.Treibstoff,
+                   new SelectList(Model.TreibstoffTypOptions, "Key", "Value"))
+                    @Html.ValidationMessageFor(model => model.Treibstoff, "", new { @class = "text-danger" })
+
+                    <div>
+                        <label for="file">Upload Bild</label>
+                        <input type="file" name="file" id="file" style="width: 100%;" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+    </div>
+    @section Scripts{
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>
